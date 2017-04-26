@@ -1,20 +1,28 @@
 (function () {
-        'use strict';
+    'use strict';
 
-        angular
-            .module('ep.formly.samples')
-            .config(router);
+    angular
+        .module('ep.formly.samples')
+        .run(appRun);
 
-        router.$inject = ['$stateProvider', '$urlRouterProvider'];
-            /* @ngInject */
-            function router($stateProvider, $urlRouterProvider) {
-                $urlRouterProvider.otherwise('/samples/textbox');
-                $stateProvider.state('samples', {
+    appRun.$inject = ['routerHelper'];
+    /* @ngInject */
+    function appRun(routerHelper) {
+        routerHelper.configureStates(getStates());
+    }
+
+    function getStates() {
+        return [{
+                state: 'samples',
+                config: {
                     absract: true,
                     template: '<ui-view class="shuffle-animation"></ui-view>',
                     url: '/samples'
-                }).
-                state('samples.textbox', {
+                }
+            },
+            {
+                state: 'samples.textbox',
+                config: {
                     url: '/textbox',
                     templateUrl: 'app/samples/textbox.html',
                     controller: 'textboxTemplate',
@@ -31,6 +39,8 @@
                         },
                         icon: 'list-alt'
                     }
-                });
+                }
             }
-        })();
+        ];
+    }
+})();

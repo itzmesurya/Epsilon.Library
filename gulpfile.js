@@ -32,11 +32,11 @@ gulp.task('wiredep', function() {
         .src(config.index)
         .pipe(wiredep(options))
         .pipe($.inject(gulp.src(config.js.app)))
-        // .pipe($.inject(gulp.src([].concat(config.js.libraries.materialLab), {read: false}), {
-        //     starttag:'<!-- inject:js:Libraries  -->'}))
-        .pipe($.inject(gulp.src([].concat(config.js.libraries.ace.plugins,
-        config.js.libraries.ace.acejs), {read: false}), {
+        .pipe($.inject(gulp.src([].concat(config.js.libraries.materialLab), {read: false}), {
             starttag:'<!-- inject:js:Libraries  -->'}))
+        // .pipe($.inject(gulp.src([].concat(config.js.libraries.ace.plugins,
+        // config.js.libraries.ace.acejs), {read: false}), {
+        //     starttag:'<!-- inject:js:Libraries  -->'}))
         .pipe(gulp.dest(config.client));
 });
 // clean tasks
@@ -78,9 +78,9 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
 
     return gulp
         .src(config.index)
-        // .pipe($.inject(gulp.src(config.css.materialLab)))
-        .pipe($.inject(gulp.src([].concat(config.css.ace.bootstrap,
-         config.css.ace.plugins, config.css.ace.acestyles))))
+        .pipe($.inject(gulp.src(config.css.materialLab)))
+        // .pipe($.inject(gulp.src([].concat(config.css.ace.bootstrap,
+        //  config.css.ace.plugins, config.css.ace.acestyles))))
         .pipe(gulp.dest(config.client));
 });
 gulp.task('serve-dev', ['inject'], function() {
