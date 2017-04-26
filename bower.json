@@ -1,0 +1,34 @@
+{
+  "name": "Epsilon.Formly",
+  "version": "0.1.0",
+  "description": "Epsilon form generator using the powerful Angular Formly Library",
+  "authors": [
+    "Pradeep Bandaru"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.3.8",
+    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+    "bardjs": "~0.0.4"
+  },
+  "dependencies": {
+    "jquery": "~3.2.1",
+    "angular": "~1.6.4",
+    "angular-sanitize": "~1.6.4",
+    "bootstrap": "^3.3.6",
+    "extras.angular.plus": "~0.9.2",
+    "moment": "~2.8.4",
+    "angular-ui-router": "~0.2.13",
+    "toastr": "~2.1.0",
+    "angular-animate": "~1.3.8",
+    "api-check": "~7.5.5",
+    "angular-bootstrap": "0.13.4",
+    "angular-formly": "~7.3.9",
+    "angular-local-storage": "^0.2.5"
+  }
+}

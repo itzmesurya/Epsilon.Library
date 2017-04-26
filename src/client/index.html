@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ng="http://angularjs.org" ng-app="ep.formly" ng-strict-di>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title ng-bind="title"></title>
+    <base href="/">
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        
+        .ng-hide {
+            display: none!important;
+        }
+    </style>
+    <script>
+        window.CKEDITOR_BASEPATH = '/ckeditor/';
+    </script>
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/app.css-->
+    <!-- inject:css -->
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/bootstrap.min.css">
+   
+    <link rel="stylesheet" href="/src/client/fonts/ace/font-awesome.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/jquery-ui.custom.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/chosen.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/bootstrap-datepicker3.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/bootstrap-datetimepicker.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/daterangepicker.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/bootstrap-colorpicker.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/fonts.googleapis.com.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/ace.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/ace-skins.min.css">
+   
+    <link rel="stylesheet" href="/src/client/styles/ace/ace-rtl.min.css">
+   
+    <!-- endinject -->
+    <!-- endbuild -->
+
+</head>
+
+<body class="no-skin">
+
+    <!--=== Formly Application ===-->
+    <div ng-include="'app/layout/shell.html'"></div>
+    <div id="splash-page" ng-show="false">
+        <div class="page-splash">
+            <div class="page-splash-message">
+                Gulp
+            </div>
+            <div class="progress progress-striped active page-progress-bar">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /Formly Application ===-->
+
+    <!-- build:js js/lib.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/api-check/dist/api-check.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-formly/dist/formly.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+
+    <!-- build:js js/app.js-->
+    <!-- inject:js:Libraries  -->
+    <script src="/src/client/libraries/ace/jquery-2.1.4.min.js"></script>
+    <script src="/src/client/libraries/ace/bootstrap.min.js"></script>
+    <script src="/src/client/libraries/ace/jquery-ui.custom.min.js"></script>
+    <script src="/src/client/libraries/ace/jquery.ui.touch-punch.min.js"></script>
+    <script src="/src/client/libraries/ace/chosen.jquery.min.js"></script>
+    <script src="/src/client/libraries/ace/spinbox.min.js"></script>
+    <script src="/src/client/libraries/ace/bootstrap-datepicker.min.js"></script>
+    <script src="/src/client/libraries/ace/bootstrap-timepicker.min.js"></script>
+    <script src="/src/client/libraries/ace/daterangepicker.min.js"></script>
+    <script src="/src/client/libraries/ace/bootstrap-datetimepicker.min.js"></script>
+    <script src="/src/client/libraries/ace/bootstrap-colorpicker.min.js"></script>
+    <script src="/src/client/libraries/ace/jquery.knob.min.js"></script>
+    <script src="/src/client/libraries/ace/autosize.min.js"></script>
+    <script src="/src/client/libraries/ace/jquery.inputlimiter.min.js"></script>
+    <script src="/src/client/libraries/ace/jquery.maskedinput.min.js"></script>
+    <script src="/src/client/libraries/ace/bootstrap-tag.min.js"></script>
+    <script src="/src/client/libraries/ace/ace-elements.min.js"></script>
+    <script src="/src/client/libraries/ace/ace.min.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+   
+    <script src="/src/client/app/app.module.js"></script>
+   
+    <script src="/src/client/app/layout/layout.module.js"></script>
+   
+    <script src="/src/client/app/templates/templates.module.js"></script>
+   
+    <script src="/src/client/app/core/core.module.js"></script>
+   
+    <script src="/src/client/app/samples/samples.module.js"></script>
+   
+    <script src="/src/client/app/templates/textbox/textbox.module.js"></script>
+   
+    <script src="/src/client/app/layout/shell.controller.js"></script>
+   
+    <script src="/src/client/app/samples/samples.route.js"></script>
+   
+    <script src="/src/client/app/samples/textbox.controller.js"></script>
+   
+    <script src="/src/client/app/templates/textbox/textbox.run.js"></script>
+   
+    <!-- endinject -->
+
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+
+    <!-- endbuild -->
+</body>
+
+</html>

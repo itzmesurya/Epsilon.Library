@@ -1,0 +1,21 @@
+<div class="col-sm-12" style="background-color: white;">
+    <fieldset class="scheduler-border">
+        <br><br>
+        <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.userFields" options="vm.options" form="vm.myform">
+            
+        </formly-form>
+        <button type="submit" class="btn btn-primary">Submit<div class="ripple-container"></div></button>
+    </fieldset>
+</div>
+<br>
+<p class="col-sm-12"><b>model: </b></p>
+<div class="col-sm-12" style="overflow-y: scroll;">
+    <pre>{{ vm.formModel| json }}</pre>
+</div>
+</br>
+<p class="col-sm-12"><b>Angular-Formly Fields: </b></p>
+<div class="col-sm-12" style="overflow-y: scroll; height:400px;">
+    <div ng-repeat="item in vm.userFields">
+        <pre>{{ item | json }}</pre>
+    </div>
+</div>
