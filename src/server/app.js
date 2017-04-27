@@ -9,6 +9,7 @@ var cors = require('cors');
 var errorHandler = require('./routes/utils/errorHandler')();
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var appConfig = require('./config/app.config.js');
 var port = process.env.PORT || 7201;
 var routes;
 
@@ -30,9 +31,13 @@ console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
-app.get('/ping', function(req, res, next) {
+app.get('/ping', function (req, res, next) {
     console.log(req.body);
     res.send('pong');
+});
+
+app.get('/appConfig', function (req, res, next) {
+    res.send(appConfig);
 });
 
 switch (environment) {
@@ -54,8 +59,8 @@ switch (environment) {
         break;
 }
 
-app.listen(port, function() {
+app.listen(port, function () {
     console.log('Express server listening on port ' + port);
     console.log('\n__dirname = ' + __dirname +
-                '\nprocess.cwd = ' + process.cwd());
+        '\nprocess.cwd = ' + process.cwd());
 });
