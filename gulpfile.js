@@ -8,6 +8,8 @@ var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
 var port = process.env.PORT || config.defaultPort;
+var appConfig = require('./src/server/config/app.config.js');
+var themeName = appConfig.theme;
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
