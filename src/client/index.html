@@ -25,14 +25,18 @@
     <!-- endbuild -->
 
     <!-- build:css styles/app.css-->
-    <!-- inject:css -->
+    <!-- inject: theme css -->
    
+    
     <link rel="stylesheet" href="/src/client/styles/materialLab/vendor.bundle.css">
    
+    
     <link rel="stylesheet" href="/src/client/styles/materialLab/app.bundle.css">
    
+    
     <link rel="stylesheet" href="/src/client/styles/materialLab/theme-a.css">
    
+    
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -71,50 +75,27 @@
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
-
-    <!-- build:js js/app.js-->
-    <!-- inject:js:Libraries  -->
-    
+     <!-- inject:js:Libraries  -->
     <script src="/src/client/libraries/materialLab/vendor.bundle.js"></script>
-    
     <script src="/src/client/libraries/materialLab/app.bundle.js"></script>
-    
     <!-- endinject -->
-    <!-- inject:js -->
-   
+    <!-- build:js js/app.js-->
     <script src="/src/client/app/app.module.js"></script>
-   
     <script src="/src/client/app/samples/samples.module.js"></script>
-   
-    <script src="/src/client/app/templates/templates.module.js"></script>
-   
-    <script src="/src/client/app/layout/layout.module.js"></script>
-   
     <script src="/src/client/app/core/core.module.js"></script>
-   
-    <script src="/src/client/app/blocks/logger/logger.module.js"></script>
-   
+    <script src="/src/client/app/templates/templates.module.js"></script>
+    <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
-   
+    <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/templates/textbox/textbox.module.js"></script>
-   
     <script src="/src/client/app/samples/samples.route.js"></script>
-   
     <script src="/src/client/app/samples/textbox.controller.js"></script>
-   
-    <script src="/src/client/app/layout/shell.controller.js"></script>
-   
     <script src="/src/client/app/core/config.js"></script>
-   
     <script src="/src/client/app/core/constants.js"></script>
-   
-    <script src="/src/client/app/blocks/logger/logger.js"></script>
-   
+    <script src="/src/client/app/layout/shell.controller.js"></script>
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
-   
+    <script src="/src/client/app/blocks/logger/logger.js"></script>
     <script src="/src/client/app/templates/textbox/textbox.run.js"></script>
-   
     <!-- endinject -->
 
     <!-- inject:templates:js -->

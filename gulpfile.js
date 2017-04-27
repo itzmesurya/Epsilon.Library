@@ -5,8 +5,11 @@ var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
 var path = require('path');
+var gulpif = require('gulp-if');
 var _ = require('lodash');
-var $ = require('gulp-load-plugins')({lazy: true});
+var $ = require('gulp-load-plugins')({
+    lazy: true
+});
 var port = process.env.PORT || config.defaultPort;
 var appConfig = require('./src/server/config/app.config.js');
 var themeName = appConfig.theme;
@@ -14,7 +17,7 @@ var themeName = appConfig.theme;
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
-gulp.task('vet', function() {
+gulp.task('vet', function () {
     log('Analyzing source with JSHint and JSCS');
 
     return gulp
@@ -22,30 +25,30 @@ gulp.task('vet', function() {
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jscs())
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.jshint.reporter('jshint-stylish', {
+            verbose: true
+        }))
         .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('wiredep', function() {
+gulp.task('wiredep', function () {
     log('Wire up the bower css js and our app js into the html');
     var options = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
     return gulp
         .src(config.index)
         .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(config.js.app)))
-        .pipe($.inject(gulp.src([].concat(config.js.libraries.materialLab), {read: false}), {
-            starttag:'<!-- inject:js:Libraries  -->'}))
-        // .pipe($.inject(gulp.src([].concat(config.js.libraries.ace.plugins,
-        // config.js.libraries.ace.acejs), {read: false}), {
-        //     starttag:'<!-- inject:js:Libraries  -->'}))
+        .pipe($.inject(gulp.src(config.js.app), {
+                starttag: '<!-- build:js js/app.js-->'
+            }))
         .pipe(gulp.dest(config.client));
+
 });
 // clean tasks
-gulp.task('clean-styles', function(done) {
+gulp.task('clean-styles', function (done) {
     clean(config.temp + '**/*.css', done);
 });
-gulp.task('clean-code', function(done) {
+gulp.task('clean-code', function (done) {
     var files = [].concat(
         config.temp + '**/*.js',
         config.build + '**/*.html',
@@ -53,45 +56,77 @@ gulp.task('clean-code', function(done) {
     );
     clean(files, done);
 });
-gulp.task('styles', ['clean-styles'], function() {
+gulp.task('styles', ['clean-styles'], function () {
     log('Compiling Less --> CSS');
 
     return gulp
         .src([config.less])
         .pipe($.plumber())
         .pipe($.less())
-        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+        .pipe($.autoprefixer({
+            browsers: ['last 2 version', '> 5%']
+        }))
         .pipe(gulp.dest(config.temp));
 });
-gulp.task('templatecache', ['clean-code'], function() {
+gulp.task('templatecache', ['clean-code'], function () {
     log('Creating AngularJS $templateCache');
 
     return gulp
         .src(config.htmltemplates)
-        .pipe($.htmlmin({empty: true}))
+        .pipe($.htmlmin({
+            empty: true
+        }))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
             config.templateCache.options
-            ))
+        ))
         .pipe(gulp.dest(config.temp));
 });
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
-    log('Wire up the app css into the html, and call wiredep ');
 
-    return gulp
-        .src(config.index)
-        .pipe($.inject(gulp.src(config.css.materialLab)))
-        // .pipe($.inject(gulp.src([].concat(config.css.ace.bootstrap,
-        //  config.css.ace.plugins, config.css.ace.acestyles))))
-        .pipe(gulp.dest(config.client));
+gulp.task('inject-theme',['wiredep'], function () {
+    var stream =
+        log('Wire up the js and css into the html  for theme ' + themeName);
+    if (themeName === 'materiallab') {
+        log('injecting matriallab js & css files into index');
+        return gulp.src(config.index)
+            .pipe($.inject(gulp.src([].concat(config.js.libraries.materialLab), {
+                read: false
+            }), {
+                starttag: '<!-- inject:js:Libraries  -->'
+            }))
+            .pipe($.inject(gulp.src(config.css.materialLab), {
+                starttag: '<!-- inject: theme css -->'
+            }))
+            .pipe(gulp.dest(config.client));
+    } else if (themeName === 'ace') {
+        log('injecting ace js files into index');
+        return gulp.src(config.index)
+            .pipe($.inject(gulp.src([].concat(config.js.libraries.ace.plugins,
+                config.js.libraries.ace.acejs), {
+                read: false
+            }), {
+                starttag: '<!-- inject:js:Libraries  -->'
+            }))
+            .pipe($.inject(gulp.src([].concat(config.css.ace.bootstrap,
+                config.css.ace.plugins, config.css.ace.acestyles)), {
+                starttag: '<!-- inject: theme css -->'
+            }))
+            .pipe(gulp.dest(config.client));
+    }
 });
-gulp.task('serve-dev', ['inject'], function() {
-    serve(true /* isDev */);
+
+gulp.task('inject', ['inject-theme'], function () {
+    log('Wire up the app css into the html, and call wiredep ');
 });
+gulp.task('serve-dev', ['inject'], function () {
+    serve(true /* isDev */ );
+});
+
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
     log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
+
 function startBrowserSync(isDev, specRunner) {
     if (args.nosync || browserSync.active) {
         return;
@@ -135,6 +170,7 @@ function startBrowserSync(isDev, specRunner) {
 
     browserSync(options);
 }
+
 function serve(isDev, specRunner) {
     var nodeOptions = {
         script: config.nodeServer,
@@ -147,31 +183,35 @@ function serve(isDev, specRunner) {
     };
 
     return $.nodemon(nodeOptions)
-        .on('restart', function(ev) {
+        .on('restart', function (ev) {
             log('*** nodemon restarted');
             log('files changed on restart:\n' + ev);
-            setTimeout(function() {
+            setTimeout(function () {
                 browserSync.notify('reloading now ...');
-                browserSync.reload({stream: false});
+                browserSync.reload({
+                    stream: false
+                });
             }, config.browserReloadDelay);
         })
-        .on('start', function() {
+        .on('start', function () {
             log('*** nodemon started');
             startBrowserSync(isDev, specRunner);
         })
-        .on('crash', function() {
+        .on('crash', function () {
             log('*** nodemon crashed: script crashed for some reason');
         })
-        .on('exit', function() {
+        .on('exit', function () {
             log('*** nodemon exited cleanly');
         });
 }
+
 function clean(path, done) {
     log('Cleaning: ' + $.util.colors.blue(path));
     del(path, done);
 }
+
 function log(msg) {
-    if (typeof(msg) === 'object') {
+    if (typeof (msg) === 'object') {
         for (var item in msg) {
             if (msg.hasOwnProperty(item)) {
                 $.util.log($.util.colors.blue(msg[item]));
