@@ -21,24 +21,27 @@
             console.log(vm.myForm);
         };
 
-        vm.userFields = [
-            {
+        vm.userFields = [{
                 key: 'phone',
-                id:'phone',
+                id: 'phone',
                 type: 'ep-text',
                 templateOptions: {
                     label: 'Phone',
                     required: true,
-                    maxlength:30,
-                    minlength:10,
-                    validationType:'number'
+                    maxlength: 30,
+                    minlength: 10,
+                    validationType: 'number'
                 },
                 validation: {
                     messages: {
                         required: '\"Phone is required\"',
                         pattern: '\"Invalid Phone Expected Format : xxx-xxx-xxxx\"'
                     },
-                    errorExistsAndShouldBeVisible:true
+                    errorExistsAndShouldBeVisible: true
+                },
+                data: {
+                    somePropertyToTriggerTheManipulator: true,
+                    theme: 'ace'
                 }
             },
             {
@@ -47,13 +50,17 @@
                 templateOptions: {
                     label: 'Email',
                     required: true,
-                    validationType:'email'
+                    validationType: 'email'
                 },
                 validation: {
                     messages: {
                         required: '\"Email is required\"',
                         pattern: '\"Invalid Phone Expected Format : xxx-xxx-xxxx\"'
                     }
+                },
+                data: {
+                    somePropertyToTriggerTheManipulator: true,
+                    theme: 'ml'
                 }
             }
         ];
