@@ -21,6 +21,11 @@
             console.log(vm.myForm);
         };
 
+        vm.formModel = {
+            'phone': '998-458-1245',
+            'email': 'test@test.com'
+        };
+
         vm.userFields = [{
                 key: 'phone',
                 id: 'phone',
@@ -29,8 +34,7 @@
                     label: 'Phone',
                     required: true,
                     maxlength: 30,
-                    minlength: 10,
-                    validationType: 'number'
+                    minlength: 10
                 },
                 validation: {
                     messages: {

@@ -18,29 +18,34 @@ module.exports = function () {
         ],
         build: './build/',
         client: client,
-        css:{
-            all:[client + '**/*.css',
-             '!' + client + 'styles/materialLab/*.css',
-             '!' + client + 'styles/ace/*.css'],
-            materialLab:[client + 'styles/materialLab/vendor.bundle.css',
-            client + 'styles/materialLab/app.bundle.css',
-            client + 'styles/materialLab/theme-a.css'],
-            ace:{
-                bootstrap:[client + 'styles/ace/bootstrap.min.css',
-                client + 'fonts/ace/font-awesome.min.css'
+        css: {
+            all: [client + '**/*.css',
+                '!' + client + 'styles/materialLab/*.css',
+                '!' + client + 'styles/ace/*.css'
+            ],
+            materialLab: [client + 'styles/materialLab/vendor.bundle.css',
+                client + 'styles/materialLab/app.bundle.css',
+                client + 'styles/materialLab/theme-a.css'
+            ],
+            ace: {
+                bootstrap: [client + 'styles/ace/bootstrap.min.css',
+                    client + 'fonts/ace/font-awesome.min.css'
                 ],
-                plugins:[client + 'styles/ace/jquery-ui.custom.min.css',
-                client + 'styles/ace/chosen.min.css',
-                client + 'styles/ace/bootstrap-datepicker3.min.css',
-                client + 'styles/ace/bootstrap-datetimepicker.min.css',
-                client + 'styles/ace/daterangepicker.min.css',
-                client + 'styles/ace/bootstrap-datetimepicker.min.css',
-                client + 'styles/ace/bootstrap-colorpicker.min.css',
-                client + 'styles/ace/fonts.googleapis.com.css'],
-                acestyles:[client + 'styles/ace/ace.min.css',
-                client + 'styles/ace/ace-skins.min.css',
-                client + 'styles/ace/ace-rtl.min.css']}
-    },
+                plugins: [client + 'styles/ace/jquery-ui.custom.min.css',
+                    client + 'styles/ace/chosen.min.css',
+                    client + 'styles/ace/bootstrap-datepicker3.min.css',
+                    client + 'styles/ace/bootstrap-datetimepicker.min.css',
+                    client + 'styles/ace/daterangepicker.min.css',
+                    client + 'styles/ace/bootstrap-datetimepicker.min.css',
+                    client + 'styles/ace/bootstrap-colorpicker.min.css',
+                    client + 'styles/ace/fonts.googleapis.com.css'
+                ],
+                acestyles: [client + 'styles/ace/ace.min.css',
+                    client + 'styles/ace/ace-skins.min.css',
+                    client + 'styles/ace/ace-rtl.min.css'
+                ]
+            }
+        },
         fonts: [
             client + 'fonts/**/*.*'
         ],
@@ -55,31 +60,36 @@ module.exports = function () {
                 '!' + clientApp + '**/*.spec.js'
             ],
             libraries: {
-                all:[ client + 'libraries/**/*.js',
-                 '!' + client + 'libraries/materialLab/*.js',
-                 '!' + client + 'libraries/ace/*.js'],
-                materialLab:[client + 'libraries/materialLab/vendor.bundle.js',
-                 client + 'libraries/materialLab/app.bundle.js'],
-                ace:{
-                    plugins:[client + 'libraries/ace/jquery-2.1.4.min.js',
-                    client + 'libraries/ace/bootstrap.min.js',
-                    client + 'libraries/ace/jquery-ui.custom.min.js',
-                    client + 'libraries/ace/jquery.ui.touch-punch.min.js',
-                    client + 'libraries/ace/chosen.jquery.min.js',
-                    client + 'libraries/ace/spinbox.min.js',
-                    client + 'libraries/ace/bootstrap-datepicker.min.js',
-                    client + 'libraries/ace/bootstrap-timepicker.min.js',
-                    client + 'libraries/ace/moment.min',
-                    client + 'libraries/ace/daterangepicker.min.js',
-                    client + 'libraries/ace/bootstrap-datetimepicker.min.js',
-                    client + 'libraries/ace/bootstrap-colorpicker.min.js',
-                    client + 'libraries/ace/jquery.knob.min.js',
-                    client + 'libraries/ace/autosize.min.js',
-                    client + 'libraries/ace/jquery.inputlimiter.min.js',
-                    client + 'libraries/ace/jquery.maskedinput.min.js',
-                    client + 'libraries/ace/bootstrap-tag.min.js'],
-                    acejs:[client + 'libraries/ace/ace-elements.min.js',
-                    client + 'libraries/ace/ace.min.js']}
+                all: [client + 'libraries/**/*.js',
+                    '!' + client + 'libraries/materialLab/*.js',
+                    '!' + client + 'libraries/ace/*.js'
+                ],
+                materialLab: [client + 'libraries/materialLab/vendor.bundle.js',
+                    client + 'libraries/materialLab/app.bundle.js'
+                ],
+                ace: {
+                    plugins: [client + 'libraries/ace/jquery-2.1.4.min.js',
+                        client + 'libraries/ace/bootstrap.min.js',
+                        client + 'libraries/ace/jquery-ui.custom.min.js',
+                        client + 'libraries/ace/jquery.ui.touch-punch.min.js',
+                        client + 'libraries/ace/chosen.jquery.min.js',
+                        client + 'libraries/ace/spinbox.min.js',
+                        client + 'libraries/ace/bootstrap-datepicker.min.js',
+                        client + 'libraries/ace/bootstrap-timepicker.min.js',
+                        client + 'libraries/ace/moment.min',
+                        client + 'libraries/ace/daterangepicker.min.js',
+                        client + 'libraries/ace/bootstrap-datetimepicker.min.js',
+                        client + 'libraries/ace/bootstrap-colorpicker.min.js',
+                        client + 'libraries/ace/jquery.knob.min.js',
+                        client + 'libraries/ace/autosize.min.js',
+                        client + 'libraries/ace/jquery.inputlimiter.min.js',
+                        client + 'libraries/ace/jquery.maskedinput.min.js',
+                        client + 'libraries/ace/bootstrap-tag.min.js'
+                    ],
+                    acejs: [client + 'libraries/ace/ace-elements.min.js',
+                        client + 'libraries/ace/ace.min.js'
+                    ]
+                }
             }
         },
         less: client + 'styles/styles.less',
@@ -168,14 +178,20 @@ module.exports = function () {
                 temp + config.templateCache.file,
                 config.serverIntegrationSpecs
             ),
-            exclude: [].concat(
-            ),
+            exclude: [].concat(),
             coverage: {
                 dir: report + 'coverage',
-                reporters: [
-                    { type: 'html', subdir: 'report-html' },
-                    { type: 'lcov', subdir: 'report-lcov' },
-                    { type: 'text-summary' }
+                reporters: [{
+                        type: 'html',
+                        subdir: 'report-html'
+                    },
+                    {
+                        type: 'lcov',
+                        subdir: 'report-lcov'
+                    },
+                    {
+                        type: 'text-summary'
+                    }
                 ]
             },
             preprocessors: {}

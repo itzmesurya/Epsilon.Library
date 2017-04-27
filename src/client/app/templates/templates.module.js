@@ -3,7 +3,7 @@
 
     angular
         .module('ep.formly.templates', [
-            'ep.formly.templates.textbox'
+            'ep.formly.templates.textbox', 'ace', 'ml'
         ]);
 
 })();
