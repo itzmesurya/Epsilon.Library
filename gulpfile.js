@@ -39,8 +39,8 @@ gulp.task('wiredep', function () {
         .src(config.index)
         .pipe(wiredep(options))
         .pipe($.inject(gulp.src(config.js.app), {
-                starttag: '<!-- build:js js/app.js-->'
-            }))
+            starttag: '<!-- build:js js/app.js-->'
+        }))
         .pipe(gulp.dest(config.client));
 
 });
@@ -83,7 +83,7 @@ gulp.task('templatecache', ['clean-code'], function () {
         .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('inject-theme',['wiredep'], function () {
+gulp.task('inject-theme', ['wiredep'], function () {
     var stream =
         log('Wire up the js and css into the html  for theme ' + themeName);
     if (themeName === 'materiallab') {
