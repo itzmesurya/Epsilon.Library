@@ -29,7 +29,7 @@
         vm.userFields = [{
                 key: 'phone',
                 id: 'phone',
-                type: 'ep-text',
+                type: 'ep-text-common',
                 templateOptions: {
                     label: 'Phone',
                     required: true,
@@ -42,15 +42,11 @@
                         pattern: '\"Invalid Phone Expected Format : xxx-xxx-xxxx\"'
                     },
                     errorExistsAndShouldBeVisible: true
-                },
-                data: {
-                    somePropertyToTriggerTheManipulator: true,
-                    theme: 'ace'
                 }
             },
             {
                 key: 'email',
-                type: 'ep-text',
+                type: 'ep-text-common',
                 templateOptions: {
                     label: 'Email',
                     required: true,
@@ -61,10 +57,6 @@
                         required: '\"Email is required\"',
                         pattern: '\"Invalid Phone Expected Format : xxx-xxx-xxxx\"'
                     }
-                },
-                data: {
-                    somePropertyToTriggerTheManipulator: true,
-                    theme: 'ml'
                 }
             }
         ];
