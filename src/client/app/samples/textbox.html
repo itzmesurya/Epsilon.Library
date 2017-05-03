@@ -1,10 +1,9 @@
 <div class="col-sm-12" style="background-color: white;">
-    <fieldset class="scheduler-border">
-        <br><br>
-        <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.userFields" options="vm.options" form="vm.myform">
+    <form name="form1" novalidate>
+        <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.userFields" form="vm.myform" options="vm.options">
         </formly-form>
-        <button type="submit" class="btn btn-primary">Submit<div class="ripple-container"></div></button>
-    </fieldset>
+        <button type="submit" ng-click="vm.submit()" class="btn btn-primary">Submit<div class="ripple-container"></div></button>
+    </form>
 </div>
 <br>
 
@@ -12,21 +11,3 @@
     <p class="col-sm-12"><b>model: </b></p>
     <pre>{{ vm.formModel| json }}</pre>
 </div>
-</br>
-<!--<div class="col-sm-6" style="overflow-y: scroll; min-height:100px;">
-    <p class="col-sm-12"><b>Errors: </b></p>
-    <div ng-repeat="item in vm.userFields">
-        <div ng-if="item.formControl.$error ">
-            <p>{{item.name}}</p>
-            <pre>{{item.formControl.$error | json}}</pre>
-        </div>
-    </div>
-</div>-->
-</br>
-
-<!--<div class="col-sm-12" style="overflow-y: scroll; height:400px;">
-    <p class="col-sm-12"><b>Angular-Formly Fields: </b></p>
-    <div ng-repeat="item in vm.userFields">
-        <pre>{{ item | json }}</pre>
-    </div>
-</div>-->

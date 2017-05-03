@@ -18,13 +18,36 @@
     }
     angular
         .module('ep.formly.templates.textbox')
-        .run(['formlyConfig', function (formlyConfig) {
+        .run(['formlyConfig', 'formlyValidationMessages', function (formlyConfig, formlyValidationMessages) {
+            // formlyValidationMessages.addStringMessage('required', 'This field is required');
+            formlyConfig.setWrapper([{
+                name: 'errorValidator',
+                template: [
+                    '<formly-transclude></formly-transclude>',
+                    '<div ng-messages="fc.$error">',
+                    '<p ng-message="minlength">Your {{to.label}} is too short.</p>',
+                    '<p ng-message="maxlength">Your {{to.label}} is too long.</p>',
+                    '<p ng-message="required">Your {{to.label}} is required.</p>',
+                    '</div>'
+                ].join(' ')
+            }]);
             formlyConfig.templateManipulators.preWrapper.push(function (template, options, scope) {
-                if (!options.templateOptions.overrideManipulator) {
+                if (options.templateOptions && options.templateOptions.overrideManipulator && !options.templateOptions.overrideManipulator) {
                     return jsonData[appconfig.theme][options.type];
                 } else {
                     return template;
                 }
+            });
+            formlyConfig.setType({
+                name: 'ep-text-formly',
+                templateUrl: 'app/templates/textbox/textbox.html',
+                defaultOptions: {
+                    templateOptions: {
+                        labelType: 'inline',
+                        overrideManipulator: true
+                    }
+                }
+                // wrapper: ['errorValidator']
             });
             formlyConfig.setType({
                 name: 'ep-text',
@@ -37,17 +60,17 @@
             });
             formlyConfig.setType({
                 name: 'ep-text-common',
-                template: '<ep-text-common options="options"' +
-                    ' model-var="model[options.key]"></ep-text-common>',
+                templateUrl: 'app/templates/ep-text/ep-text-common.html',
                 defaultOptions: {
                     templateOptions: {
                         labelType: 'inline',
                         overrideManipulator: true
                     }
-                }
+                },
+                wrapper: ['errorValidator']
             });
-        }]);
 
+        }]);
 
     angular
         .module('ep.formly.templates.textbox')
