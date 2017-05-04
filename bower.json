@@ -30,6 +30,7 @@
     "angular-bootstrap": "0.13.4",
     "angular-formly": "~7.3.9",
     "angular-local-storage": "^0.2.5",
-    "angular-messages": "ng-messages#*"
+    "angular-messages": "ng-messages#*",
+    "angular-ui-grid": "^4.0.4"
   }
 }

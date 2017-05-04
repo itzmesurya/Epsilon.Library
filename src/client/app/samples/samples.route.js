@@ -40,6 +40,27 @@
                         icon: 'list-alt'
                     }
                 }
+            },
+            {
+                state: 'samples.grid',
+                config: {
+                    url: '/grid',
+                    templateUrl: 'app/samples/grid.html',
+                    controller: 'gridController',
+                    controllerAs: 'vm',
+                    title: 'Grid',
+                    settings: {
+                        nav: 7,
+                        menu: {
+                            cssState: 'active'
+                        },
+                        mini: {
+                            content: '<i class="ace-icon fa fa-list-alt"></i>',
+                            buttonColor: 'purple',
+                        },
+                        icon: 'list-alt'
+                    }
+                }
             }
         ];
     }
