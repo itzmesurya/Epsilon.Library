@@ -16,7 +16,7 @@
                 state: 'samples',
                 config: {
                     absract: true,
-                    template: '<ui-view class="shuffle-animation"></ui-view>',
+                    template: '<ui-view></ui-view>',
                     url: '/samples'
                 }
             },
@@ -48,18 +48,7 @@
                     templateUrl: 'app/samples/grid.html',
                     controller: 'gridController',
                     controllerAs: 'vm',
-                    title: 'Grid',
-                    settings: {
-                        nav: 7,
-                        menu: {
-                            cssState: 'active'
-                        },
-                        mini: {
-                            content: '<i class="ace-icon fa fa-list-alt"></i>',
-                            buttonColor: 'purple',
-                        },
-                        icon: 'list-alt'
-                    }
+                    title: 'Grid'
                 }
             }
         ];
