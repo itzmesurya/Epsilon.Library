@@ -1,6 +1,6 @@
-<div class="form-group is-empty">
+<div class="form-group">
     <label for="{{vm.options.templateOptions.label}}" class="col-md-2 control-label">{{vm.options.templateOptions.label}}</label>
     <div class="col-md-10">
-        <input type="text" class="form-control" id="{{options.id}}" ng-model="vm.modelVar" placeholder="{{vm.options.templateOptions.label}}">
+        <input type="text" class="form-control" id="{{options.id}}" minlength="{{vm.options.templateOptions.minlength}}" maxlength="{{vm.options.templateOptions.maxlength}}" required="{{vm.options.templateOptions.required}}" ng-model="vm.modelVar" placeholder="{{vm.options.templateOptions.label}}">
     </div>
 </div>
