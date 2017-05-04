@@ -9,12 +9,20 @@
     /*@ngInject*/
     function Templates($scope, logger) {
         var vm = this;
-        vm.submit = function () {
-            console.log(vm);
+        vm.submit = function (data) {
+            if (vm.myform.$invalid) {
+                angular.forEach(vm.myform.$error, function (field) {
+                    angular.forEach(field, function (errorField) {
+                        errorField.$setTouched();
+                    });
+                });
+            }
+            console.log(data);
+            console.log(vm.myForm);
         };
 
         vm.formModel = {
-            'phone': '968-895-4578',
+            'phone': '998-458-1245',
             'email': 'test@test.com'
         };
 
@@ -40,13 +48,14 @@
                 type: 'ep-text-common',
                 templateOptions: {
                     label: 'Phone',
+                    required: true,
                     maxlength: 30,
-                    minlength: 10,
-                    required: true
+                    minlength: 10
                 },
                 validation: {
                     messages: {
-                        required: 'hello'
+                        required: '\"Phone is required\"',
+                        pattern: '\"Invalid Phone Expected Format : xxx-xxx-xxxx\"'
                     }
                 }
             },
@@ -66,11 +75,18 @@
                 }
             }
         ];
+        vm.actualFormFields = angular.copy(vm.userFields);
         vm.options = {
             formState: {
                 programName: 'Ford Campaigns',
                 formName: 'Campaign Detail'
             }
         };
+
+        activate();
+
+        function activate() {
+            logger.info('Activated Textbox');
+        }
     }
 })();

@@ -118,8 +118,8 @@ gulp.task('inject-theme', ['wiredep'], function () {
 gulp.task('inject', ['inject-theme'], function () {
     log('Wire up the app css into the html, and call wiredep ');
 });
-gulp.task('serve-dev', ['inject'], function () {
-    serve(true /* isDev */ );
+gulp.task('serve-dev', ['vet', 'inject'], function () {
+    serve(true /* isDev */);
 });
 
 function changeEvent(event) {

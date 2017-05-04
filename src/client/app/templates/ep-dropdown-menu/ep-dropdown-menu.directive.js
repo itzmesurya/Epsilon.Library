@@ -3,20 +3,20 @@
 
     angular
         .module('ep.formly.templates')
-        .directive('epTextCommon', epTextAce);
+        .directive('epDropdownMenu', epDropdownMenuAce);
 
-    epTextAce.inject = [];
+    epDropdownMenuAce.inject = ['$scope', 'theme'];
 
-    function epTextAce() {
+    function epDropdownMenuAce() {
         // Usage:
         //
         // Creates:
         //
         var directive = {
             bindToController: true,
-            controller: EpTextAceController,
+            controller: EpDropdownMenuAceController,
             controllerAs: 'vm',
-            templateUrl: 'app/templates/ep-text/ep-text-ace.html',
+            templateUrl: 'app/templates/ep-dropdown-menu/ep-dropdown-menu-ace.html',
             link: link,
             restrict: 'EA',
             scope: {
@@ -29,12 +29,12 @@
         function link(scope, element, attrs) {}
     }
     /* @ngInject */
-    function EpTextAceController() {
+    function EpDropdownMenuAceController($scope, theme) {
         var vm = this;
     }
     angular
         .module('ep.formly.templates')
-        .directive('epTextCommon', function () {
+        .directive('epDropdownMenu', function () {
             // Usage:
             //
             // Creates:
@@ -45,7 +45,7 @@
                     var vm = this;
                 }],
                 controllerAs: 'vm',
-                templateUrl: 'app/templates/ep-text/ep-text-ml.html',
+                templateUrl: 'app/templates/ep-dropdown-menu/ep-dropdown-menu-ml.html',
                 link: link,
                 restrict: 'EA',
                 scope: {
@@ -59,7 +59,7 @@
         });
 
     angular
-        .module('ep.formly.templates').decorator('epTextCommonDirective',
+        .module('ep.formly.templates').decorator('epDropdownMenuDirective',
          ['$delegate', 'theme', function name($delegate, theme) {
             switch (theme) {
                 case 'ace':

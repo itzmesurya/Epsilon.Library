@@ -1,9 +1,11 @@
 <div class="col-sm-12" style="background-color: white;">
-    <form name="form1" novalidate>
-        <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.userFields" form="vm.myform" options="vm.options">
+    <fieldset class="scheduler-border p-l-50">
+        <br><br>
+        <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.userFields" options="vm.options"
+            form="vm.myform">
         </formly-form>
-        <button type="submit" ng-click="vm.submit()" class="btn btn-primary">Submit<div class="ripple-container"></div></button>
-    </form>
+        <button type="submit" class="btn btn-primary" ng-click="vm.submit(vm.formModel)">Submit<div class="ripple-container"></div></button>
+    </fieldset>
 </div>
 <br>
 

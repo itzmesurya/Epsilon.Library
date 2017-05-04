@@ -18,7 +18,8 @@
     }
     angular
         .module('ep.formly.templates.textbox')
-        .run(['formlyConfig', 'formlyValidationMessages', function (formlyConfig, formlyValidationMessages) {
+        .run(['formlyConfig', 'formlyValidationMessages', function (formlyConfig,
+         formlyValidationMessages) {
             // formlyValidationMessages.addStringMessage('required', 'This field is required');
             formlyConfig.setWrapper([{
                 name: 'errorValidator',
@@ -32,7 +33,8 @@
                 ].join(' ')
             }]);
             formlyConfig.templateManipulators.preWrapper.push(function (template, options, scope) {
-                if (options.templateOptions && options.templateOptions.overrideManipulator && !options.templateOptions.overrideManipulator) {
+                if (options.templateOptions && options.templateOptions.overrideManipulator &&
+                 !options.templateOptions.overrideManipulator) {
                     return jsonData[appconfig.theme][options.type];
                 } else {
                     return template;
@@ -60,7 +62,11 @@
             });
             formlyConfig.setType({
                 name: 'ep-text-common',
-                templateUrl: 'app/templates/ep-text/ep-text-common.html',
+                template: '<ep-text-common options="options"' +
+                    ' model-var="model[options.key]"></ep-text-common>',
+                controller: ['$scope', function ($scope) {
+                    var control = $scope.fc;
+                }],
                 defaultOptions: {
                     templateOptions: {
                         labelType: 'inline',
@@ -69,16 +75,32 @@
                 },
                 wrapper: ['errorValidator']
             });
-
+            formlyConfig.setType({
+                name: 'ep-dropdown-menu',
+                // template: '<ep-dropdown-menu options="options"' +
+                //     ' model-var="model[options.key]"></ep-dropdown-menu>',
+                template: '<ep-dropdown-menu ng-model="model[options.key]"' +
+                ' options="options"></ep-dropdown-menu>',
+                controller: ['$scope', function ($scope) {
+                    var control = $scope.fc;
+                }],
+                defaultOptions: {
+                    templateOptions: {
+                        overrideManipulator: true
+                    }
+                }
+            });
         }]);
-
     angular
         .module('ep.formly.templates.textbox')
         .provider('theme', ThemeProvider);
 
     function ThemeProvider() {
         this.$get = function () {
-            return appconfig.theme;
+            if (appconfig) {
+                return appconfig.theme;
+            }
+            return null;
         };
     }
 

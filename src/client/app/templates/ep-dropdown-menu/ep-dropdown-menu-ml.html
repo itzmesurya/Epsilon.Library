@@ -1,0 +1,10 @@
+<div class="dropdown" ng-class="vm.options.templateOptions.dropdownClass">
+
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link" aria-expanded="false">
+        <span ng-bind-html="vm.options.templateOptions.label"></span>
+    </a>
+
+    <div class="dropdown-menu" ng-class="vm.options.templateOptions.bodyClass">
+        <div compile="vm.options.templateOptions.bodyTemplate"></div>
+    </div>
+</div>

@@ -42,6 +42,27 @@
                 }
             },
             {
+                state: 'samples.dropdownmenu',
+                config: {
+                    url: '/dropdownmenu',
+                    templateUrl: 'app/samples/dropdown-menu.html',
+                    controller: 'dropdownmenuTemplate',
+                    controllerAs: 'vm',
+                    title: 'Dropdown Manu',
+                    settings: {
+                        nav: 6,
+                        menu: {
+                            cssState: 'active'
+                        },
+                        mini: {
+                            content: '<i class="ace-icon fa fa-list-alt"></i>',
+                            buttonColor: 'purple',
+                        },
+                        icon: 'list-alt'
+                    }
+                }
+            },
+            {
                 state: 'samples.grid',
                 config: {
                     url: '/grid',

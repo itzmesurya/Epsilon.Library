@@ -1,10 +1,10 @@
-(function () {
+(function() {
     'use strict';
 
     angular.module('ep.formly.layout', [])
-        .directive('navbar', function () {
+    .directive('navbar', function () {
             return {
                 templateUrl: 'app/layout/nav-bar.html'
-            }
+            };
         });
 })();

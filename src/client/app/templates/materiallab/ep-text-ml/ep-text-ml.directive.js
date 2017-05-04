@@ -3,9 +3,6 @@
     angular
         .module('ml')
         .directive('epTextMl', epTextMl);
-
-
-
     function epTextMl() {
         // Usage:
         //
@@ -29,5 +26,4 @@
 
         function link(scope, element, attrs) {}
     }
-    
 })();
