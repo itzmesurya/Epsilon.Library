@@ -21,12 +21,14 @@
             restrict: 'EA',
             scope: {
                 options: '=',
-                modelVar: '='
+                modelVar: '=',
             }
         };
         return directive;
 
-        function link(scope, element, attrs) {}
+        function link(scope, element, attrs, controller) {
+            // console.log('debug');
+        }
     }
     /* @ngInject */
     function EpTextAceController() {
@@ -52,12 +54,14 @@
                 restrict: 'EA',
                 scope: {
                     options: '=',
-                    modelVar: '='
+                    modelVar: '=',
                 }
             };
             return directive;
 
-            function link(scope, element, attrs) {}
+            function link(scope, element, attrs, controller) {
+                // console.log('debug');
+            }
         });
 
     angular

@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="{{to.label}}" class="col-md-2 control-label">{{to.label}}</label>
+    <div class="col-md-10">
+        <input type="text" name="{{options.key}}" class="form-control" id="{{options.id}}" ng-model="modelVar" ng-required="{{to.required}}"
+            placeholder="{{to.label}}" ng-required="true">
+        <div ng-messages="fc.$error">
+            <p ng-message="minlength">Your name is too short.</p>
+            <p ng-message="maxlength">Your name is too long.</p>
+            <p ng-message="required">Your name is required.</p>
+        </div>
+    </div>
+</div>

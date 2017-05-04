@@ -1,0 +1,17 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><b>UI-GRID</b> demo with epsilon generic formly apprroach</h3>
+    </div>
+    <div class="panel-body">
+        <form name="form1" novalidate>
+            <formly-form class="form-horizontal" id="form-horizontal" model="vm.formModel" fields="vm.userFields" form="vm.myform" options="vm.options">
+            </formly-form>
+            <button type="submit" ng-click="vm.submit()" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+<div class="col-sm-6" style="overflow-y: scroll;">
+    <p class="col-sm-12"><b>model: </b></p>
+    <pre>{{ vm.formModel| json }}</pre>
+</div>

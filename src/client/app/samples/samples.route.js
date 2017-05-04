@@ -16,7 +16,7 @@
                 state: 'samples',
                 config: {
                     absract: true,
-                    template: '<ui-view class="shuffle-animation"></ui-view>',
+                    template: '<ui-view></ui-view>',
                     url: '/samples'
                 }
             },
@@ -39,6 +39,16 @@
                         },
                         icon: 'list-alt'
                     }
+                }
+            },
+            {
+                state: 'samples.grid',
+                config: {
+                    url: '/grid',
+                    templateUrl: 'app/samples/grid.html',
+                    controller: 'gridController',
+                    controllerAs: 'vm',
+                    title: 'Grid'
                 }
             }
         ];
